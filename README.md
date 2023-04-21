@@ -1,7 +1,7 @@
 # sleepoutside
 
 ## Description
-
+Team Tim
 Use this as a starting point to complete the WDD 330 team activity: the SleepOutside web application. It scaffolds out a simple web app with Vite support to bundle up our assets.
 
 ## Prerequisites
@@ -10,8 +10,8 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 
 ## Setup
 
-- `npm install`
-- `npm run start` starts up a local server and updates on any JS or CSS/SCSS changes.
+- `NPM install`
+- `NPM run start` starts up a local server and updates on any JS or CSS/SCSS changes.
 
 ## Other commands
 
