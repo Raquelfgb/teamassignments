@@ -30,5 +30,6 @@ export function setClick(selector, callback) {
 export function getParams(param){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  return urlParams;
+  const product = urlParams.get('Product');
+  return product;
 }
