@@ -33,3 +33,4 @@ export function getParam(type){
   const product = urlParams.get(type);
   return product;
 }
+
