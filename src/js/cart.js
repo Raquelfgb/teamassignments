@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, clearLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
 
@@ -32,3 +32,17 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+//clear the contents of the cart 
+// Add event listener to the "Clear Cart" button
+document.getElementById('clear-cart').addEventListener('click', function() {
+  // Call the clear() function to clear the contents of the cart
+  clear();
+});
+
+function clear() {
+  //call the clear local storage
+  clearLocalStorage();
+  // reload new content
+  location.reload();
+}
+
