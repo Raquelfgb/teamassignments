@@ -2,8 +2,7 @@
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
+
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -32,5 +31,6 @@ export function getParam(type){
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(type);
   return product;
+  const product = urlParams.get('Product');
+  return product;
 }
-

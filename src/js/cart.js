@@ -1,15 +1,11 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-
   const cartItems = getLocalStorage("so-cart");
   console.log(cartItems);
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  //I got it working with just one item here
-  // const htmlItem = cartItemTemplate(cartItem);
-  // document.querySelector(".product-list").innerHTML = htmlItem;
 }
 
 function cartItemTemplate(item) {
