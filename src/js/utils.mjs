@@ -18,7 +18,13 @@ export function clearLocalStorage(key, data) {
   localStorage.clear();
 }
 
-
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false){
+  const htmlStrings = list.map(templateFn);
+  if (clear){
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+}
 
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -29,6 +35,8 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+
+// this function gets a parameter from the url 
 export function getParam(type){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
