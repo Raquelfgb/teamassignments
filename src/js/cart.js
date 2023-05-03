@@ -1,9 +1,9 @@
-import { getLocalStorage, clearLocalStorage } from "./utils.mjs";
+import { getLocalStorage, clearLocalStorage, } from "./utils.mjs";
 
 function renderCartContents() {
 
   const cartItems = getLocalStorage("so-cart");
-  console.log(cartItems);
+  //console.log(cartItems);
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
@@ -26,12 +26,14 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+</li>
+<p class="cart-card__remove" id = removeItem>remove<p>`; // added a removal button
 
   return newItem;
 }
 
 renderCartContents();
+
 //clear the contents of the cart 
 // Add event listener to the "Clear Cart" button
 document.getElementById('clear-cart').addEventListener('click', function() {
@@ -46,3 +48,18 @@ function clear() {
   location.reload();
 }
 
+//remove an item off the cart 
+// Add event listener to the "removeItem" button
+document.getElementById('removeItem').addEventListener('click', function() {
+  removeIndex(0);
+});
+
+// remove item from index
+export function removeIndex(index){
+  let products =[];
+  products = getLocalStorage("so-cart");
+  //console.log(products);
+  products.splice(index,1);
+
+  //location.reload();
+}
