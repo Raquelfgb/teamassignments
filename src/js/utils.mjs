@@ -42,7 +42,7 @@ export function getParam(type){
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(type);
   return product;
-  const product = urlParams.get('Product');
-  return product;
+  // const product = urlParams.get('Product');
+  // return product;
 }
 

@@ -1,9 +1,13 @@
-import { getLocalStorage, clearLocalStorage, setLocalStorage} from "./utils.mjs";
+import {
+  getLocalStorage,
+  clearLocalStorage,
+  setLocalStorage,
+} from "./utils.mjs";
 
 let cartIndex = 0;
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
@@ -11,8 +15,6 @@ function renderCartContents() {
   // const htmlItem = cartItemTemplate(cartItem);
   // document.querySelector(".product-list").innerHTML = htmlItem;
 }
-
-
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -30,16 +32,16 @@ function cartItemTemplate(item) {
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>
 <p class="cart-card__remove" id ="${cartIndex}">remove<p>`; // added a removal button
-cartIndex = cartIndex +1;
+  cartIndex = cartIndex + 1;
 
   return newItem;
 }
 
 renderCartContents();
 
-//clear the contents of the cart 
+//clear the contents of the cart
 // Add event listener to the "Clear Cart" button
-document.getElementById('clear-cart').addEventListener('click', function() {
+document.getElementById("clear-cart").addEventListener("click", function () {
   // Call the clear() function to clear the contents of the cart
   clear();
 });
@@ -51,28 +53,29 @@ function clear() {
   location.reload();
 }
 
-
 // remove item from index
-function removeItem(index){
+function removeItem(index) {
   index = parseInt(index);
-  let products =[];
+  let products = [];
   products = getLocalStorage("so-cart");
   //console.log(products);
-  products.splice(index,1);
-  console.log("removed item number: " + index)
+  products.splice(index, 1);
+  console.log("removed item number: " + index);
   console.log(products);
   setLocalStorage("so-cart", products);
   renderCartContents();
 }
 
 // Add a click event listener to the parent element that contains all the remove buttons
-document.querySelector('.product-list').addEventListener('click', function(event) {
-  // Check if the clicked element is a remove button
-  if (event.target.classList.contains('cart-card__remove')) {
-    // Get the index of the clicked remove button
-    const index = parseInt(event.target.id);
-    // Remove the corresponding item from the cart
-    removeItem(index);
-    location.reload();
-  }
-});
+document
+  .querySelector(".product-list")
+  .addEventListener("click", function (event) {
+    // Check if the clicked element is a remove button
+    if (event.target.classList.contains("cart-card__remove")) {
+      // Get the index of the clicked remove button
+      const index = parseInt(event.target.id);
+      // Remove the corresponding item from the cart
+      removeItem(index);
+      location.reload();
+    }
+  });

@@ -6,19 +6,12 @@ import {
 } from "./utils.mjs";
 import ProductData from "./ProductData.mjs"; // gives us the json file we need
 import ProductDetails from "./ProductDetails.mjs"; // gathers the data from the json file
-import ProductDetails from "./ProductDetails.mjs";
-
-const productId = getParam("product");
-const dataSource = new ProductData("tents");
-console.log(productId);
-
-const product = new ProductDetails(productId, dataSource);
-product.init();
 
 const dataSource = new ProductData("tents");
 
 // get the Id of our product
-const productId = getParams("product");
+const productId = getParam("product");
+console.log(productId);
 
 // record it to the console
 // console.log(dataSource);
@@ -26,7 +19,7 @@ const productId = getParams("product");
 console.log(dataSource.findProductById(productId));
 
 const product = new ProductDetails(productId, dataSource);
-// product.init();
+product.init();
 
 // add to cart button event handler, called on by event listener
 async function addToCartHandler(e) {
