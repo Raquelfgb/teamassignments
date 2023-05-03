@@ -48,10 +48,12 @@ export default class ProductDetails {
 
   addToCart(){
   const cart = getLocalStorage("so-cart") || []; // retrieve current cart data or create a new empty array if it doesn't exist
+  
   cart.push(this.product); // add new product to cart array
   setLocalStorage("so-cart", cart); // save updated cart array to local storage
   //clearLocalStorage(); // clear storage if needed if you start with any values that are not desired you will need to
   }
+
   async init(){
     this.product = await this.dataSource.findProductById(this.productID);
     console.log(this.product);
