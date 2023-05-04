@@ -18,7 +18,7 @@ function renderCartContents() {
 // Call function to compute total
 showTotal(cartItems);
 
-// Get compute the total cost of the items in the cart
+// Compute the total cost of the items in the cart
 function showTotal(cartItems) {
 
   let totalDiv = document.querySelector(".cart-footer");
