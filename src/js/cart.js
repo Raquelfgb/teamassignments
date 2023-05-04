@@ -38,7 +38,6 @@ function showTotal(cartItems) {
     let total = 0;
 
     cartItems.forEach((item) => {
-      console.log(item.FinalPrice);
 
       itemCost = item.FinalPrice;
       total += itemCost;
