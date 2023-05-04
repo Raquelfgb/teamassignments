@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-function productCardTemplate(product) {
-    return `<li class="product-card">
-        <a href= "product_pages/?product=${product.Id}">
-=======
 import {renderListWithTemplate} from "./utils.mjs"
 
 
@@ -10,35 +5,11 @@ import {renderListWithTemplate} from "./utils.mjs"
 function productCardTemplate(product) {
         return `<li class="product-card">
         <a href="product_pages/index.html?product=${product.Id}">
->>>>>>> 92fe3e3baf84f2c4127b6c576070b059e384fd86
             <img src="${product.Image}" alt="Image of ${product.Name}">
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.Name}</h2>
             <p class="product-card__price">$${product.FinalPrice}</p>
         </a>
-<<<<<<< HEAD
-    </li>`
-}
-
-export default class ProductListing {
-    constructor(category, dataSource, listElement) {
-        this.category = category;
-        this.dataSource = dataSource;
-        this.listElement = listElement;
-    }
-    async init() {
-        const list = await this.dataSource.getData();
-        this.renderList(list);
-    }
-
-    renderList(list) {
-
-        // renderListWithTemplate(productCardTemplate, this.listElement, list);
-        const htmlStrings = list.map(productCardTemplate);
-        this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
-    }
-}
-=======
         </li>`;
     }
     
@@ -93,4 +64,3 @@ export default class ProductListing{
 //   }
 
 
->>>>>>> 92fe3e3baf84f2c4127b6c576070b059e384fd86
