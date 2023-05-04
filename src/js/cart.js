@@ -1,4 +1,5 @@
-import { getLocalStorage, clearLocalStorage, setLocalStorage} from "./utils.mjs";
+import { getLocalStorage, clearLocalStorage, setLocalStorage, loadHeaderFooter} from "./utils.mjs";
+loadHeaderFooter();
 
 let cartIndex = 0;
 function renderCartContents() {
@@ -7,10 +8,6 @@ function renderCartContents() {
   
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-
-  //I got it working with just one item here
-  // const htmlItem = cartItemTemplate(cartItem);
-  // document.querySelector(".product-list").innerHTML = htmlItem;
 }
 
 
