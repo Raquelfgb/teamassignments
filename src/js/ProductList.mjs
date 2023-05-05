@@ -52,6 +52,8 @@ export default class ProductListing{
     //   }
 }
 
+
+
 // async function checkImage(url) {
 //     try {
 //       const img = new Image();
