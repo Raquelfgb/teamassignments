@@ -1,54 +1,14 @@
-import { loadHeaderFooter} from "./utils.mjs";
-import { renderCartContents } from "./ShoppingCart.mjs";
+import { getLocalStorage, clearLocalStorage, setLocalStorage} from "./utils.mjs";
 
 let cartIndex = 0;
-// Moved this to global scope so I don't have to do it inside my function
-const cartItems = getLocalStorage("so-cart");
-console.log(cartItems);
+export function renderCartContents() {
 
-function renderCartContents() {
+  const cartItems = getLocalStorage("so-cart");
   
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-
-  //I got it working with just one item here
-  // const htmlItem = cartItemTemplate(cartItem);
-  // document.querySelector(".product-list").innerHTML = htmlItem;
 }
 
-// Call function to compute total
-showTotal(cartItems);
-
-// Compute the total cost of the items in the cart
-function showTotal(cartItems) {
-
-  let totalDiv = document.querySelector(".cart-footer");
-  let totalSpan = document.createElement('span');
-  let p = document.querySelector(".cart-total");
-
-  if (cartItems == null)
-  {
-    totalDiv.style.display="none";
-  }
-
-  else {
-
-    totalDiv.style.display="block";
-
-    let itemCost = 0;
-    let total = 0;
-
-    cartItems.forEach((item) => {
-
-      itemCost = item.FinalPrice;
-      total += itemCost;
-
-    });
-    
-    totalSpan.textContent = `$${total.toFixed(2)}`;
-    p.appendChild(totalSpan);
-  }
-}
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -71,7 +31,7 @@ cartIndex = cartIndex +1;
   return newItem;
 }
 
-renderCartContents();
+
 
 //clear the contents of the cart 
 // Add event listener to the "Clear Cart" button
