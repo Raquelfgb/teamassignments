@@ -239,13 +239,11 @@ button {
   }
 
   .grid-container {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-
-
