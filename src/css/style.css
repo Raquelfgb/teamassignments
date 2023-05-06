@@ -201,6 +201,29 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+.cart-card__remove {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: auto;
+  margin-bottom: auto;
+  display: block; /* add this to make the button a block-level element */
+}
+
+.cart-card__remove:hover {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+.grid-container {
+  margin: 0 auto;
+  max-width: 50%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
 @media screen and (min-width: 500px) {
   body {
@@ -213,6 +236,10 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
