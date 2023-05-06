@@ -217,6 +217,14 @@ button {
   color: #fff;
 }
 
+.grid-container {
+  margin: 0 auto;
+  max-width: 50%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -229,9 +237,15 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
+  .grid-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
