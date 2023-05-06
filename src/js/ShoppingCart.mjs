@@ -1,14 +1,49 @@
 import { getLocalStorage, clearLocalStorage, setLocalStorage} from "./utils.mjs";
 
 let cartIndex = 0;
-export function renderCartContents() {
 
-  const cartItems = getLocalStorage("so-cart");
+//Moved this in global scope so I don't have to do it in showTotal function
+const cartItems = getLocalStorage("so-cart");
+
+export function renderCartContents() {
   
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
+// Call function to compute total
+showTotal(cartItems);
+
+// Compute the total cost of the items in the cart
+function showTotal(cartItems) {
+
+  let totalDiv = document.querySelector(".cart-footer");
+  let totalSpan = document.createElement('span');
+  let p = document.querySelector(".cart-total");
+
+  if (cartItems == null)
+  {
+    totalDiv.style.display="none";
+  }
+
+  else {
+
+    totalDiv.style.display="block";
+
+    let itemCost = 0;
+    let total = 0;
+
+    cartItems.forEach((item) => {
+
+      itemCost = item.FinalPrice;
+      total += itemCost;
+
+    });
+    
+    totalSpan.textContent = `$${total.toFixed(2)}`;
+    p.appendChild(totalSpan);
+  }
+}
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
