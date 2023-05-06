@@ -1,7 +1,7 @@
 function productCardTemplate(product) {
     return <li class="product-card">
       <a href="product_pages/index.html?product=">
-        <img src="" alt="Image of ">
+        <img src="" alt="Image of "></img>
         <h3 class="card__brand"></h3>
         <h2 class="card__name"></h2>
         <p class="product-card__price">$</p>
