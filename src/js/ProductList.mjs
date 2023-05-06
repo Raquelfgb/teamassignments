@@ -1,13 +1,38 @@
+import { renderListWithTemplate } from "./utils.mjs";
+
 function productCardTemplate(product) {
-    return `<li class="product-card">
-      <a href="product_pages/index.html?product=">
-        <img src="" alt="Image of ">
-        <h3 class="card__brand"></h3>
-        <h2 class="card__name"></h2>
-        <p class="product-card__price">$</p>
-      </a>
-    </li>`
+  let returnString = "";
+  checkImageExists(product.Image);
+  if (checkImageExists(product.Image)) {
+  returnString = `<li class="product-card">
+  <a href="product_pages/index.html?product=${product.Id}">
+  <img
+    src="${product.Image}"
+    alt="Image of ${product.Name}"
+  />
+  <h3 class="card__brand">${product.Brand.Name}</h3>
+  <h2 class="card__name">${product.Name}</h2>
+  <p class="product-card__price">$${product.FinalPrice}</p></a>
+  </li>`;
+  } else {
+    ;
   }
+  return returnString;
+}
+
+function checkImageExists(filepath) {
+  let booleanResponse = true;
+  const xhr = new XMLHttpRequest();
+  xhr.open('HEAD', filePath, false);
+  xhr.send();
+
+  if (xhr.status == "404") {
+    booleanResponse = false;
+  } else {
+    booleanResponse = true;
+  }
+  return booleanResponse;
+}
 
 export default class ProductListing {
     constructor(category, dataSource, listElement) {
@@ -22,7 +47,8 @@ export default class ProductListing {
     }
 
     renderList(list) {
-        const htmlStrings = list.map(productCardTemplate);
-        this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(""));
+      renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
+
+
 };
