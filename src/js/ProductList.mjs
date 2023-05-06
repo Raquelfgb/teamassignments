@@ -28,13 +28,13 @@ function productCardTemplate(product) {
 // </li>
 
 export default class ProductListing{
-    constructor(catagory, dataSource, listElement){
-        this.catagory = catagory;
+    constructor(category, dataSource, listElement){
+        this.category = category;
         this.dataSource = dataSource; //json file
         this.listElement = listElement; // location in html it will be added to
     }
     async init(){
-        const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
         console.log(list);
         this.renderList(list);
         

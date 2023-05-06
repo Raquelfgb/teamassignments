@@ -64,7 +64,7 @@ export function setClick(selector, callback) {
 
 
 // this function gets a parameter from the url 
-export function getParam(type){
+export default function getParam(type){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(type);
