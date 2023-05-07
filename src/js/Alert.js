@@ -6,4 +6,5 @@ export default class Alert {
     constructor(alertMessage) {
         this.alertMessage = alertMessage
     }
+
 }
