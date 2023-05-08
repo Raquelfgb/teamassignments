@@ -125,7 +125,7 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: left;
   list-style-type: none;
   padding: 0;
 }
@@ -140,6 +140,7 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  text-align: center;
 }
 .product-card h2,
 .product-card h3,
