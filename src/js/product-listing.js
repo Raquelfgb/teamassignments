@@ -10,7 +10,7 @@ const category = getParam("category");
 const dataSource = new ProductData(category);
 const element = document.getElementById("productList");
 
-const productList = new ProductListing("Tents", dataSource, element);
+const productList = new ProductListing(dataSource, element);
 
 productList.init();
 

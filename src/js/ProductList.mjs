@@ -1,10 +1,12 @@
+//List the product cards on a given page based on datasource and location desired
+
 import {renderListWithTemplate} from "./utils.mjs"
 
 
 // ProductList.mjs
 function productCardTemplate(product) {
         return `<li class="product-card">
-        <a href="product_pages/index.html?product=${product.Id}">
+        <a href="/product_pages/index.html?product=${product.Id}">
             <img src="${product.Image}" alt="Image of ${product.Name}">
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.Name}</h2>
@@ -28,8 +30,7 @@ function productCardTemplate(product) {
 // </li>
 
 export default class ProductListing{
-    constructor(catagory, dataSource, listElement){
-        this.catagory = catagory;
+    constructor(dataSource, listElement){
         this.dataSource = dataSource; //json file
         this.listElement = listElement; // location in html it will be added to
     }
@@ -43,13 +44,6 @@ export default class ProductListing{
     renderList(list){
         renderListWithTemplate(productCardTemplate,this.listElement,list);
     }
-    
-
-    // old render 
-    // renderList(list) {
-    //     const htmlStrings = list.map(productCardTemplate);
-    //     this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
-    //   }
 }
 
 

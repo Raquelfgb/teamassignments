@@ -1,3 +1,4 @@
+//generates the proper json data for a product category
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
