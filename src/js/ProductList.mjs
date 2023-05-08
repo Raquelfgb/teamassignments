@@ -40,7 +40,7 @@ export default class ProductListing{
         const list = await this.dataSource.getData(this.category); // get the data from the API
         console.log(list);
         this.renderList(list);
-        document.querySelector(".title").innerHTML = this.category; // set title
+        document.getElementById("title").innerHTML = this.category.toUpperCase(); // set title
     }
     
     renderList(list){
