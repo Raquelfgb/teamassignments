@@ -1,7 +1,4 @@
 import {
-  setLocalStorage,
-  getLocalStorage,
-  clearLocalStorage,
   getParam,
   loadHeaderFooter,
 } from "./utils.mjs";
