@@ -30,15 +30,17 @@ function productCardTemplate(product) {
 // </li>
 
 export default class ProductListing{
-    constructor(dataSource, listElement){
+    constructor(category, dataSource, listElement){
+        this.category = category;
         this.dataSource = dataSource; //json file
         this.listElement = listElement; // location in html it will be added to
     }
     async init(){
-        const list = await this.dataSource.getData();
+        // console.log(this.catagory);
+        const list = await this.dataSource.getData(this.category); // get the data from the API
         console.log(list);
         this.renderList(list);
-        
+        document.querySelector(".title").innerHTML = this.category; // set title
     }
     
     renderList(list){
