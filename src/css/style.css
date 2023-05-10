@@ -146,6 +146,13 @@ button {
 .product-card p {
   margin: 0.5em 0;
 }
+.product-card .crossout {
+  text-decoration: line-through;
+}
+.product-card .discount-price {
+  font-weight: bolder;
+  color: #525b0f
+}
 
 .card__brand {
   font-size: var(--small-font);
