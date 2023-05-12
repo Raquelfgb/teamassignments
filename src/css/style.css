@@ -81,6 +81,15 @@ header {
   color: var(--tertiary-color);
 }
 
+#itemcount{
+  height: 60px;
+  width: 60px;
+  background-color: #f0a868;
+  border-radius: 15px;
+  font-size: small;
+  right: 20px;
+}
+
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);

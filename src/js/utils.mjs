@@ -18,15 +18,27 @@ export function clearLocalStorage(key, data) {
   localStorage.clear();
 }
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false){
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false
+) {
   const htmlStrings = list.map(templateFn);
-  if (clear){
+  if (clear) {
     parentElement.innerHTML = "";
   }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(template, parentElement, data, callback, position = "afterbegin"){
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  callback,
+  position = "afterbegin"
+) {
   if (parentElement) {
     parentElement.insertAdjacentHTML(position, template);
     if (callback) {
@@ -43,7 +55,7 @@ async function loadTemplate(path) {
   return template;
 }
 
-export async function loadHeaderFooter(){
+export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partials/header.html");
   const headerElement = document.querySelector("#main-header");
   const footerTemplate = await loadTemplate("../partials/footer.html");
@@ -62,12 +74,21 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+export function getItemCount() {
+  let cartItems = localStorage.getItem("so-cart");
+  if (cartItems === null || typeof cartItems === "undefined") {
+    document.querySelector("#itemcount").textContent = "0";
+  } else {
+    let parsedCartItems = [JSON.parse(cartItems)];
+    
+    document.querySelector("#itemcount").textContent = parsedCartItems.length;
+  }
+}
 
-// this function gets a parameter from the url 
-export function getParam(type){
+// this function gets a parameter from the url
+export function getParam(type) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(type);
   return product;
 }
-

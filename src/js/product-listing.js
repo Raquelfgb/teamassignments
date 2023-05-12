@@ -8,7 +8,7 @@ loadHeaderFooter();
 const category = getParam("category");
 // console.log(category);
 
-const dataSource = new ProductData();
+const dataSource = new ProductData(category);
 const element = document.getElementById("productList");
 
 const productList = new ProductListing(category, dataSource, element);

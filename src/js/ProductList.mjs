@@ -36,9 +36,7 @@ export default class ProductListing{
         this.listElement = listElement; // location in html it will be added to
     }
     async init(){
-        // console.log(this.catagory);
         const list = await this.dataSource.getData(this.category); // get the data from the API
-        console.log(list);
         this.renderList(list);
         document.getElementById("title").innerHTML = this.category.toUpperCase(); // set title
     }

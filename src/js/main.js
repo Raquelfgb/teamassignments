@@ -2,9 +2,18 @@
 // import ProductList from "./ProductList.mjs";
 // import ProductData from "./ProductData.mjs";
 // import ProductList from "./ProductList.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { doc } from "prettier";
+import { loadHeaderFooter, getItemCount } from "./utils.mjs";
 
-loadHeaderFooter();
+await loadHeaderFooter();
+// getItemCount();
+if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', getItemCount())
+} else {
+    
+    getItemCount();
+}
+
 
 // const dataSource = new ProductData('tents');
 // const element = document.getElementById("productList");
