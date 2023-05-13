@@ -1,64 +1,42 @@
-//List the product cards on a given page based on datasource and location desired
+import { renderListWithTemplate } from "./utils.mjs";
 
-import {renderListWithTemplate} from "./utils.mjs"
-
-
-// ProductList.mjs
 function productCardTemplate(product) {
-        return `<li class="product-card">
-        <a href="/product_pages/index.html?product=${product.Id}">
-            <img src="${product.Images.PrimaryMedium}" alt="Image of ${product.Name}">
-            <h3 class="card__brand">${product.Brand.Name}</h3>
-            <h2 class="card__name">${product.Name}</h2>
-            <p class="product-card__price">$${product.FinalPrice}</p>
-        </a>
-        </li>`;
-    }
-    
-
-  //example item 
-
-// <li class="product-card">
-// <a href="product_pages/index.html?product=880RR">
-// <img
-//     src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
-//     alt="Marmot Ajax tent"
-// />
-// <h3 class="card__brand">Marmot</h3>
-// <h2 class="card__name">Ajax Tent - 3-Person, 3-Season</h2>
-// <p class="product-card__price">$199.99</p></a>
-// </li>
-
-export default class ProductListing{
-    constructor(category, dataSource, listElement){
-        this.category = category;
-        this.dataSource = dataSource; //json file
-        this.listElement = listElement; // location in html it will be added to
-    }
-    async init(){
-        // console.log(this.catagory);
-        const list = await this.dataSource.getData(this.category); // get the data from the API
-        console.log(list);
-        this.renderList(list);
-        document.getElementById("title").innerHTML = this.category.toUpperCase(); // set title
-    }
-    
-    renderList(list){
-        renderListWithTemplate(productCardTemplate,this.listElement,list);
-    }
+  return `<li class="product-card">
+  <a href="/product_pages/index.html?product=${product.Id}">
+  <img
+    src="${product.Images.PrimaryMedium}"
+    alt="Image of ${product.Name}"
+  />
+  <h3 class="card__brand">${product.Brand.Name}</h3>
+  <h2 class="card__name">${product.Name}</h2>
+  <p class="product-card__price">$${product.FinalPrice}</p></a>
+</li>`;
 }
 
+export default class ProductList {
+  constructor(category, dataSource, listElement) {
+    // We passed in this information to make our class as reusable as possible.
+    // Being able to define these things when we use the class will make it very flexible
+    this.category = category;
+    this.dataSource = dataSource;
+    this.listElement = listElement;
+  }
+  async init() {
+    // our dataSource will return a Promise...so we can use await to resolve it.
+    const list = await this.dataSource.getData(this.category);
+    // render the list
+    this.renderList(list);
+    //set the title to the current category
+    document.querySelector(".title").innerHTML = this.category;
+  }
+  // render after doing the first stretch
+  renderList(list) {
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
 
-
-// async function checkImage(url) {
-//     try {
-//       const img = new Image();
-//       img.src = url;
-//       await img.decode();
-//       return true;
-//     } catch (error) {
-//       return false;
-//     }
-//   }
-
-
+  // render before doing the stretch
+  // renderList(list) {
+  //   const htmlStrings = list.map(productCardTemplate);
+  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+  // }
+}
