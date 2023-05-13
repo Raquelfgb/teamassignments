@@ -30,4 +30,14 @@ export default class ShoppingCart {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
   }
+  emptyCart() {
+    // document.getElementById('clear-cart').addEventListener('click', () => console.log('empty'));
+    console.log('empty cart');
+    // localStorage.removeItem(this.key);
+  }
+  async init(){
+  document.getElementById('clear-cart').addEventListener('click', () => this.emptyCart);
+ 
+
+  }
 }
