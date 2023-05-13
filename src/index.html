@@ -6,7 +6,7 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/js/product-listing.js"></script>
+    <!-- <script type="module" src="/js/product-listing.js"></script> no longer in use here--> 
   </head>
   <body>
     <header class="divider" id="main-header"></header>
@@ -33,39 +33,42 @@
       </section>
 
       <!-- These are for new products -->
-      <section class="grid-container">
+      <section class="product-grid">
         <div class="tent container">
-          <img
+          <a href="product_listing/index.html?category=tents"
+              ><img
             src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Tent_3544767.svg"
             alt="Tent Icon from Noun Project: Mustofa Bayu"
-          />
+          /><h2>Tents</h2></a>
         </div>
-        <div class="backpacks container">
+        <a href="product_listing/index.html?category=backpacks"
+              ><div class="backpacks container">
           <img
             src="https://byui-cit.github.io/wdd330/images/category-icons/noun_carrier%20bag_3544771.svg"
             alt="Backpack Icon from Noun Project: Mustofa Bayu"
           />
-        </div>
-        <div class="sleepingbags container">
+        </div><h2>Backpacks</h2></a>
+        <a href="product_listing/index.html?category=sleeping-bags"
+              ><div class="sleepingbags container">
           <img
             src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Sleeping%20Bag_3544775.svg"
             alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu"
           />
-        </div>
-        <div class="hammocks container">
+        </div><h2>sleepingbags</h2></a>
+        <a href="product_listing/index.html?category=hammocks"
+              ><div class="hammocks container">
           <img
             src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Hammock_791143.svg"
             alt="Hammock Icon from Noun Project: Paul Richard"
           />
-        </div>
+        </div><h2>hammocks</h2></a>
       </section>
 
-      <section class="products">
+      <!-- <section class="products">
         <h2>Top Products</h2>
         <ul class="product-list" id="productList">
-          <!-- individual products were removed -->
         </ul>
-      </section>
+      </section> no longer in use--> 
     </main>
     <footer id="main-footer"></footer>
   </body>
