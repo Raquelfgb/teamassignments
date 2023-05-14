@@ -52,6 +52,8 @@ export default class ProductDetails {
   cart.push(this.product); // add new product to cart array
   setLocalStorage("so-cart", cart); // save updated cart array to local storage
   //clearLocalStorage(); // clear storage if needed if you start with any values that are not desired you will need to
+  jiggle();
+  decreaseButtonSize();
   }
 
   async init(){
@@ -76,4 +78,31 @@ export default class ProductDetails {
   }
 
 
+}
+// add to cart has been moved to productdetails.mjs
+
+// function to animate the cart icon
+function jiggle() {
+  console.log("jiggle");
+  var cartIcon = document.querySelector('.cart');
+
+  // Add 'jiggle' class to trigger the animation
+  cartIcon.classList.add('jiggle');
+
+  // Remove 'jiggle' class after the animation is complete
+  setTimeout(function() {
+    cartIcon.classList.remove('jiggle');
+  }, 500);
+}
+
+// function to animate the button
+function decreaseButtonSize() {
+  var addToCartButton = document.getElementById('addToCart');
+  addToCartButton.style.backgroundColor = 'darkgrey';
+
+  // Delay to increase button size
+  setTimeout(function() {
+    addToCartButton.style.backgroundColor = '';
+    addToCartButton.style.padding = '';
+  }, 300); // Adjust the delay time (in milliseconds) as needed
 }

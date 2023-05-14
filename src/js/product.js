@@ -14,4 +14,3 @@ console.log(productId);
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-// add to cart has been moved to productdetails.mjs
