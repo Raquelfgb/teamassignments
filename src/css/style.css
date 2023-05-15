@@ -255,6 +255,9 @@ button {
 
 .product-grid a {
   text-decoration: none;
+  width: 100%;
+  height: auto;
+  max-width: 20vw;
 }
 
 .product-grid a:link,
@@ -264,6 +267,10 @@ button {
 
 .product-grid a:hover {
   text-decoration: underline;
+}
+
+.product-grid h2 {
+font-size: 3vw;
 }
 
 .check-out-form {
