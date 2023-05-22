@@ -27,6 +27,7 @@ export default class ProductDetails {
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     this.product = await this.dataSource.findProductById(this.productId);
+    this.product.quantity = 1;
     // once we have the product details we can render out the HTML
     this.renderProductDetails("main");
     // once the HTML is rendered we can add a listener to Add to Cart button
@@ -38,11 +39,19 @@ export default class ProductDetails {
   addToCart() {
     let cartContents = getLocalStorage("so-cart");
     //check to see if there was anything there
-    if (!cartContents) {
+    if (cartContents === null || cartContents === undefined) {
+      // If no cart yet, grab a cart and add the current product to it
       cartContents = [];
+      //cartContents.push(this.product);
+    } 
+    const existingItem = cartContents.find(item => item.Id === this.product.Id);
+    if (existingItem) {
+      // If it's already in your cart, increase the quantity
+      existingItem.quantity += 1;
+    } else {
+      // Otherwise, just throw it in your cart
+      cartContents.push(this.product);
     }
-    // then add the current product to the list
-    cartContents.push(this.product);
     setLocalStorage("so-cart", cartContents);
     alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
   }

@@ -12,7 +12,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.quantity}</p> 
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -31,13 +31,14 @@ export default class ShoppingCart {
     this.renderCartContents(list);
   }
   calculateListTotal(list) {
-    const amounts = list.map((item) => item.FinalPrice);
-    this.total = amounts.reduce((sum, item) => sum + item);
+    //const amounts = list.map((item) => item.FinalPrice);
+    //this.total = amounts.reduce((sum, item) => sum + item);
+    this.total = list.reduce((sum, item) => sum + (item.FinalPrice * item.quantity), 0)
   }
   renderCartContents() {
     const cartItems = getLocalStorage(this.key);
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
-    document.querySelector(".list-total").innerText += ` $${this.total}`;
+    document.querySelector(".list-total").innerText += `$${this.total.toFixed(2)}`;
   }
 }
