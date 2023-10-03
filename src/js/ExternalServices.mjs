@@ -22,7 +22,7 @@ export default class ExternalServices {
     return data.Result;
   }
   async findProductById(id) {
-    const response = await fetch(baseURL + `/product/${id}`);
+    const response = await fetch(baseURL + `product/${id}`); // removed slash for netlify
     const data = await convertToJson(response);
     return data.Result;
   }
