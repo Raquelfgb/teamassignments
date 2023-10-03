@@ -17,7 +17,7 @@ export default class ExternalServices {
   async getData(category) {
     console.log(category);
     console.log("geting info from " + baseURL + `/products/search/${category}`);
-    const response = await fetch(baseURL + `products/search/${category}`); // testing removed / for netlify
+    const response = await fetch(baseURL + `products/search/${category}`); // testing  removed / for netlify
     const data = await convertToJson(response);
     return data.Result;
   }
